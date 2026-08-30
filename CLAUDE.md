@@ -15,4 +15,5 @@ Dibs is a marketplace that lives in iMessage: sellers text a photo and an agent 
 ## Docs
 
 - [Tech Stack](docs/tech_stack.md)
+- [Landing Page Plan](docs/landing_page_plan.md)
 - Scope: no separate copy here — see `../textdibs-backend/docs/scope.md` (canonical, includes the web-relevant in/out items).
