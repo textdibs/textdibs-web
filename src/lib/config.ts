@@ -5,3 +5,8 @@ export function smsHref(body?: string): string | null {
   const query = body ? `?body=${encodeURIComponent(body)}` : "";
   return `sms:${dibsPhoneNumber}${query}`;
 }
+
+// Server-only: textdibs-backend's base URL. Listings are fetched in Server
+// Components (see docs/api_contract.md), so this never reaches the client
+// and doesn't need a NEXT_PUBLIC_ prefix.
+export const apiUrl = process.env.DIBS_API_URL ?? "http://localhost:8000";
