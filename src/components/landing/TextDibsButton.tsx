@@ -4,11 +4,13 @@ import { smsHref } from "@/lib/config";
 export function TextDibsButton({
   className,
   children,
+  body,
 }: {
   className?: string;
   children: ReactNode;
+  body?: string;
 }) {
-  const href = smsHref();
+  const href = smsHref(body);
 
   if (!href) {
     return (
