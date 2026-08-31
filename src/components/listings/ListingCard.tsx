@@ -19,8 +19,8 @@ export function ListingCard({ listing }: { listing: Listing }) {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-sm font-medium">{listing.title}</span>
-          <span className="shrink-0 text-sm font-semibold text-accent">
+          <span className="text-base font-medium">{listing.title}</span>
+          <span className="shrink-0 text-base font-semibold text-accent">
             ${listing.price}
           </span>
         </div>

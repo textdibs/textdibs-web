@@ -18,7 +18,7 @@ function StepList({ steps }: { steps: string[] }) {
           <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-foreground/10 text-xs font-medium">
             {i + 1}
           </span>
-          <span className="text-foreground/80">{step}</span>
+          <span className="text-lg text-foreground/80">{step}</span>
         </li>
       ))}
     </ol>
@@ -29,13 +29,13 @@ export function HowItWorks() {
   return (
     <section className="mx-auto grid w-full max-w-4xl gap-12 px-6 py-20 sm:grid-cols-2">
       <div>
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-accent">
+        <h2 className="text-base font-semibold uppercase tracking-wide text-accent">
           Selling
         </h2>
         <StepList steps={sellSteps} />
       </div>
       <div>
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-accent">
+        <h2 className="text-base font-semibold uppercase tracking-wide text-accent">
           Buying
         </h2>
         <StepList steps={buySteps} />

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 import { TextDibsButton } from "@/components/landing/TextDibsButton";
+import { BackLink } from "@/components/ui/BackLink";
 import { getListing } from "@/lib/listings";
 
 // Listings change live and the backend isn't guaranteed reachable at Vercel
@@ -45,31 +45,26 @@ export default async function ListingPage({
     <>
       <Header />
       <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12 sm:px-10">
-        <Link
-          href="/listings"
-          className="text-sm font-medium text-foreground/60 transition hover:text-foreground"
-        >
-          ← Back to listings
-        </Link>
-        <div className="relative mt-6 aspect-square w-full overflow-hidden rounded-2xl bg-foreground/5">
+        <BackLink href="/listings">Back to listings</BackLink>
+        <div className="relative mx-auto mt-6 aspect-square w-full max-w-sm overflow-hidden rounded-2xl bg-foreground/5">
           <Image
             src={listing.photo_urls[0]}
             alt={listing.title}
             fill
-            sizes="(min-width: 768px) 768px, 100vw"
+            sizes="384px"
             className="object-cover"
             priority
           />
         </div>
         <div className="mt-6 flex items-start justify-between gap-4">
-          <h1 className="text-2xl font-semibold tracking-tight">
+          <h1 className="text-3xl font-semibold tracking-tight">
             {listing.title}
           </h1>
-          <span className="shrink-0 text-2xl font-semibold text-accent">
+          <span className="shrink-0 text-3xl font-semibold text-accent">
             ${listing.price}
           </span>
         </div>
-        <p className="mt-4 whitespace-pre-line text-foreground/80">
+        <p className="mt-4 whitespace-pre-line text-lg text-foreground/80">
           {listing.description}
         </p>
         <TextDibsButton
