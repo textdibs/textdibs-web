@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Listing } from "@/lib/listings";
+import { conditionLabel, type Listing } from "@/lib/listings";
 
 export function ListingCard({ listing }: { listing: Listing }) {
   return (
@@ -24,6 +24,11 @@ export function ListingCard({ listing }: { listing: Listing }) {
             ${listing.price}
           </span>
         </div>
+        {conditionLabel(listing.condition) && (
+          <span className="mt-1 block text-sm text-foreground/50">
+            {conditionLabel(listing.condition)}
+          </span>
+        )}
       </div>
     </Link>
   );

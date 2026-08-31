@@ -7,14 +7,28 @@ export type Listing = {
   price: string;
   photo_urls: string[];
   created_at: string;
+  condition?: string | null;
   category?: string | null;
 };
+
+const CONDITION_LABELS: Record<string, string> = {
+  new: "New",
+  like_new: "Used – Like New",
+  good: "Used – Good",
+  fair: "Used – Fair",
+};
+
+// Maps the backend's condition enum to a buyer-facing badge label (null = don't show a badge).
+export function conditionLabel(condition?: string | null): string | null {
+  if (!condition) return null;
+  return CONDITION_LABELS[condition] ?? null;
+}
 
 // Mirrors the backend's own "publicly viewable" filter (app/main.py) so the
 // fallback below returns the same rows the API would.
 const PUBLIC_FILTER =
   "status=eq.active&title=not.is.null&description=not.is.null&price=not.is.null";
-const SELECT = "id,title,description,price,photo_urls,created_at";
+const SELECT = "id,title,description,price,photo_urls,created_at,condition";
 
 function supabaseHeaders() {
   return {

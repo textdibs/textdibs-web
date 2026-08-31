@@ -5,7 +5,7 @@ import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
 import { TextDibsButton } from "@/components/landing/TextDibsButton";
 import { BackLink } from "@/components/ui/BackLink";
-import { getListing } from "@/lib/listings";
+import { getListing, conditionLabel } from "@/lib/listings";
 
 // Listings change live and the backend isn't guaranteed reachable at Vercel
 // build time — render per-request instead of prerendering at build time.
@@ -64,9 +64,11 @@ export default async function ListingPage({
             ${listing.price}
           </span>
         </div>
-        <span className="mt-3 inline-block rounded-full bg-foreground/5 px-3 py-1 text-sm font-medium text-foreground/60">
-          {listing.category ?? "Uncategorized"}
-        </span>
+        {conditionLabel(listing.condition) && (
+          <span className="mt-3 inline-block rounded-full bg-foreground/5 px-3 py-1 text-sm font-medium text-foreground/60">
+            {conditionLabel(listing.condition)}
+          </span>
+        )}
         <p className="mt-4 whitespace-pre-line text-lg text-foreground/80">
           {listing.description}
         </p>
