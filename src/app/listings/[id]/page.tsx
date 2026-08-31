@@ -64,6 +64,9 @@ export default async function ListingPage({
             ${listing.price}
           </span>
         </div>
+        <span className="mt-3 inline-block rounded-full bg-foreground/5 px-3 py-1 text-sm font-medium text-foreground/60">
+          {listing.category ?? "Uncategorized"}
+        </span>
         <p className="mt-4 whitespace-pre-line text-lg text-foreground/80">
           {listing.description}
         </p>
