@@ -67,7 +67,11 @@ export async function getListing(id: string): Promise<Listing | null> {
     const res = await fetch(`${apiUrl}/listings/${id}`, {
       next: { revalidate: 60 },
     });
-    if (res.status === 404) return null;
+    // A 404 here is ambiguous — it could mean "no such listing" from a
+    // working API, or "route doesn't exist" from a backend that isn't
+    // deployed with this endpoint yet. Don't short-circuit on it; fall
+    // through to the Supabase fallback below, which resolves the real
+    // answer either way (empty result there also means not-found).
     if (!res.ok) throw new Error(`Failed to fetch listing ${id}: ${res.status}`);
     return await res.json();
   } catch (err) {
