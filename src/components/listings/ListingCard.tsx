@@ -1,9 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Listing } from "@/lib/listings";
 
 export function ListingCard({ listing }: { listing: Listing }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-foreground/10">
+    <Link
+      href={`/listings/${listing.id}`}
+      className="block overflow-hidden rounded-2xl border border-foreground/10 transition hover:border-foreground/20"
+    >
       <div className="relative aspect-square w-full bg-foreground/5">
         <Image
           src={listing.photo_urls[0]}
@@ -21,6 +25,6 @@ export function ListingCard({ listing }: { listing: Listing }) {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
