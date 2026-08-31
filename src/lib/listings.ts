@@ -7,6 +7,7 @@ export type Listing = {
   price: string;
   photo_urls: string[];
   created_at: string;
+  category?: string | null;
 };
 
 // Mirrors the backend's own "publicly viewable" filter (app/main.py) so the
